@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,m;
+long long a[1005],b[1005],cnt=0;
+vector<long long>v,s;
+void cap_day_con(int val,long long arr[],vector<long long>&x){
+    for (int i=0;i<val;++i){
+        long long sum=0;
+        for (int j=i;j<val;++j){
+            sum+=arr[j];
+            x.push_back(sum);
+        }
+    }
+}
+int main()
+{
+    //freopen("SEQPAIRS.INP","r",stdin);
+    //freopen("SEQPAIRS.OUT","w",stdout);
+    cin>>n>>m;
+    for (int i=0;i<m;++i){
+        cin>>a[i];
+    }
+    for (int i=0;i<n;++i){
+        cin>>b[i];
+    }
+    cap_day_con(m,a,v);
+    sort(v.begin(),v.end());
+    /*for (auto x:v){
+        cout<<x<<" ";
+    }*/
+    cap_day_con(n,b,s);
+    sort(s.begin(),s.end());
+    int i=0,j=0;
+    while (i<v.size() && j<s.size()){
+        if (v[i]<s[j])++i;
+        else if (v[i]>s[j])++j;
+        else {
+            long long value=s[j],cnt1=0,cnt2=0;
+            while (j<s.size() && s[j]==value){
+                ++j,++cnt1;
+            }
+            while (i<v.size() && v[i]==value){
+                ++i,++cnt2;
+            }
+            cnt+=cnt1*cnt2;
+        }
+    }
+    cout<<cnt;
+    return 0;
+}
