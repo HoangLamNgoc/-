@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+int n;
+vector<long long>a;
+long long k;
+int main()
+{
+    freopen("KTHSUM.INP","r",stdin);
+    freopen("KTHSUM.OUT","w",stdout);
+    cin>>n>>k;
+    for (int i=0;i<n;++i){
+        long long x;
+        cin>>x;
+        a.push_back(x);
+    }
+    sort(a.begin(),a.end());
+    long long low=a[0]+a[1], high=a[n-1]+a[n-2];
+    long long res;
+    while (low<=high){
+        long long mid=(low+high)/2;
+        long long cnt=0;
+        int i=0,j=n-1;
+        while (i<j){
+            if (a[i]+a[j]<=mid){
+                cnt+=j-i;
+                ++i;
+            }
+            else --j;
+        }
+        if (cnt>=k){
+            res=mid;
+            high=mid-1;
+        }
+        else low=mid+1;
+    }
+    cout<<res;
+    return 0;
+}
