@@ -15,6 +15,7 @@ int main() {
 
     int n;
     cin >> n;
+    string ans = ""; 
 
     while (n--) {
         int cnt = 0; 
@@ -38,9 +39,8 @@ int main() {
                 ++cnt; 
         }
 
-        if (cnt == 6)
-            cout << "Y";
-        else cout << "N"; 
+        if (cnt == 6) ans += "Y"; 
+        else ans += "N";  
     }
 
     return 0;
