@@ -1,17 +1,7 @@
-// Source: https://usaco.guide/general/io
+#include <iostream>
+#include <algorihtm>
 
-#include <bits/stdc++.h>
 using namespace std;
-
-bool cleft(int a[], int n) {
-    if (n == a[0]) return false; 
-    return true; 
-}
-
-bool cright(int a[], int t, int n) {
-    if(n == a[t]) return false; 
-    return true; 
-}
 
 int main() {
     ios_base::sync_with stdio(0); 
