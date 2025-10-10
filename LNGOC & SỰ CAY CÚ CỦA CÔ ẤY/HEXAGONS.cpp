@@ -18,7 +18,6 @@ int main() {
     string ans = ""; 
 
     while (n--) {
-        int cnt = 0; 
         pair<double, double> p[6];
         vector<double> dist;
 
@@ -34,31 +33,18 @@ int main() {
         }
 
         sort(dist.begin(), dist.end());
-        for (int i = 1; i < dist.size(); ++i) {
-            if (fabs(dist[i - 1] - dist[i]) < EPS)
-                ++cnt; 
-        }
+        bool equal = true;
+        for (int i = 1; i < 6; ++i)
+            if (fabs(dist[i] - dist[0]) > EPS) equal = false;
 
-        double x = 0, y = 0;
-        for (int i = 0; i < 6; ++i) {
-            x += p[i].first;
-            y += p[i].second;
-        }
-        x /= 6.0; y /= 6.0;
-
-        double R = sqrt((p[0].first - x)*(p[0].first - x) + (p[0].second - y)*(p[0].second - y));
         bool ok = true;
-        
-        for (int i = 1; i < 6; ++i) {
-            double r2 = sqrt((p[i].first - x)*(p[i].first - x) + (p[i].second - y)*(p[i].second - y));
-            if (fabs(r2 - R) > EPS) {
-                ok = false;
-                break;
-            }
-        }
-        if (cnt == 6 && ok) ans += "Y";
-        else ans += "N";  
+        for (int i = 12; i < 15; ++i)
+            if (fabs(dist[i] - dist[14]) > EPS) ok = false;
+
+        if (equal && ok) ans += "Y";
+        else ans += "N";
     }
-    cout << ans << endl; 
+
+    cout << ans << endl;
     return 0;
 }
