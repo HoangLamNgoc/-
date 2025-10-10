@@ -39,9 +39,26 @@ int main() {
                 ++cnt; 
         }
 
-        if (cnt == 6) ans += "Y"; 
+        double x = 0, y = 0;
+        for (int i = 0; i < 6; ++i) {
+            x += p[i].first;
+            y += p[i].second;
+        }
+        x /= 6.0; y /= 6.0;
+
+        double R = sqrt((p[0].first - x)*(p[0].first - x) + (p[0].second - y)*(p[0].second - y));
+        bool ok = true;
+        
+        for (int i = 1; i < 6; ++i) {
+            double r2 = sqrt((p[i].first - x)*(p[i].first - x) + (p[i].second - y)*(p[i].second - y));
+            if (fabs(r2 - R) > EPS) {
+                ok = false;
+                break;
+            }
+        }
+        if (cnt == 6 && ok) ans += "Y";
         else ans += "N";  
     }
-
+    cout << ans << endl; 
     return 0;
 }
