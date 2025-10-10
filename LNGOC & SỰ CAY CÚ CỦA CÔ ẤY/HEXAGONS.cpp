@@ -48,3 +48,10 @@ int main() {
     cout << ans << endl;
     return 0;
 }
+
+
+/* cách lấy EPS 
+- 1 -> 1000 : EPS = 1e-8
+- 1e6 -> 1e9 : EPS = 1e-5 
+- EPS ~ max(1e-9, 1e-12 * M) với M là constraints; 
+*/
