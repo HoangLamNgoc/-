@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-const double EPS = 1e-9;
+const double EPS = 1e-5;
 
 int main() {
     ios_base::sync_with_stdio(0); 
