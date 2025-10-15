@@ -23,9 +23,11 @@ int main() {
     }
 
     sort(v.begin(), v.end());
-    for(int i = 1; i < (int)v.size(); ++i) {
-        if(v[i - 1].first == v[i].first && v[i - 1].second != v[i].second) v[i].second = v[i - 1].second = 0; 
-    }  
+    for (int i = 1; i < (int)v.size(); ++i) {
+        if (v[i].first == v[i - 1].first)
+            v[i].second += v[i - 1].second, v[i - 1].second = 0;
+    }
+  
     int dem = 1, maxval = 1, m = v.size();  
     for(int i = 0; i < m; ++i) {
         dem += v[i].second;
