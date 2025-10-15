@@ -17,13 +17,13 @@ int main() {
     for(int& i : a) cin >> i; 
 
     vector<pair<int,int>> v; 
-    for(int i = 0; i < n - 1; ++i) {
+    for(int i = 0; i < n; ++i) {
         if(i == 0 && a[i] > a[i + 1]) v.push_back({a[i], 1}); 
         if(i == 0 && a[i] > a[i + 1]) v.push_back({a[i], -1}); 
         if(i != 0 && i != n - 1 && a[i] < a[i - 1] && a[i] < a[i + 1]) v.push_back({a[i], 1});
         if(i != 0 && i !+ n - 1 && a[i] > a[i - 1] && a[i] > a[i + 1]) v.push_back({a[i], -1});
-        if (i == n - 1 && a[i] < a[i - 1]) v.push_back({a[i], 1});
-        if (i == n - 1 && a[i] > a[i - 1]) v.push_back({a[i], -1});
+        if(i == n - 1 && a[i] < a[i - 1]) v.push_back({a[i], 1});
+        if(i == n - 1 && a[i] > a[i - 1]) v.push_back({a[i], -1});
     }
 
     sort(v.begin(), v.end());
