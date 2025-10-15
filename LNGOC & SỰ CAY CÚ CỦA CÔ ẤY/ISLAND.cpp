@@ -18,18 +18,25 @@ int main() {
 
     vector<pair<int,int>> v; 
     for(int i = 0; i < n - 1; ++i) {
-        if(i == 0 && a[i] < a[i + 1]) v.push_back({a[i], 1}); 
+        if(i == 0 && a[i] > a[i + 1]) v.push_back({a[i], 1}); 
         if(i == 0 && a[i] > a[i + 1]) v.push_back({a[i], -1}); 
-        if(i != 0 && a[i] < a[i - 1] && a[i] < a[i + 1]) v.push_back({a[i], 1});
-        if(i != 0 && a[i] > a[i - 1] && a[i] > a[i + 1]) v.push_back({a[i], -1});     
+        if(i != 0 && i != n - 1 && a[i] < a[i - 1] && a[i] < a[i + 1]) v.push_back({a[i], 1});
+        if(i != 0 && i !+ n - 1 && a[i] > a[i - 1] && a[i] > a[i + 1]) v.push_back({a[i], -1});
+        if (i == n - 1 && a[i] < a[i - 1]) v.push_back({a[i], 1});
+        if (i == n - 1 && a[i] > a[i - 1]) v.push_back({a[i], -1});
     }
 
     sort(v.begin(), v.end());
-    for (int i = 1; i < (int)v.size(); ++i) {
-        if (v[i].first == v[i - 1].first)
-            v[i].second += v[i - 1].second, v[i - 1].second = 0;
+    for (int i = 1; i < (int)v.size(); ) {
+        int j = i - 1;
+        while (i < (int)v.size() && v[i].first == v[j].first) {
+            v[j].second += v[i].second;
+            v[i].second = 0;
+            ++i;
+        }
+        ++i;
     }
-  
+
     int dem = 1, maxval = 1, m = v.size();  
     for(int i = 0; i < m; ++i) {
         dem += v[i].second;
