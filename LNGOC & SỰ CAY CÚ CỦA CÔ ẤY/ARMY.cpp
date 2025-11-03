@@ -9,6 +9,10 @@ const int N = 2e5 + 5;
 vector<int> g[N];
 long long dp[N], val[N];
 
+// dp[u] : số quân tối ưu nhất khi đi đến đỉnh u
+// val[u] : số quân đóng ở trạm u 
+// priority_queue<pair<long long,int>> pq : pair.first : giá trị tìm được lúc bfs đến đỉnh pair.second; 
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
