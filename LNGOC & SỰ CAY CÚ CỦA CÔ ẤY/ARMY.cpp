@@ -40,7 +40,7 @@ int main() {
         auto [e, u] = pq.top();
         pq.pop();
 
-        if (e < dp[u]) continue; 
+        if (e < dp[u]) continue;  // nếu có 1 giá trị quân còn lại lớn hơn giá trị hiện tại, tức là có 1 cái tối ưu hơn => bỏ qua => Như vậy chỉ xét n lần => O(n + m)
 
         for (int v : g[u]) {
             long long next = (e > val[v]) ? e : e / 2;
