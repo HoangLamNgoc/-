@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int N = 1e5 + 5;
+const int N = 2e5 + 5;
 vector<int> g[N];
 long long dp[N], val[N];
 
