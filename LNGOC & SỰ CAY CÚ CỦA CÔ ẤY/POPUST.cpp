@@ -29,8 +29,8 @@ int main() {
         int u = a[i].first; 
         int v = a[i].second; 
 
-        dp[i][1] = min(dp[i - 1][0] + u, dp[i - 1][1] + v);
-        dp[i][0] = dp[i - 1][0] + v;  
+        dp[i][1] = min(dp[i - 1][0] + (long long)u, dp[i - 1][1] + (long long)v);
+        dp[i][0] = dp[i - 1][0] + (long long)v;  
     }
 
     bool ok = 0; 
